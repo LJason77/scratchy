@@ -1,0 +1,35 @@
+[package]
+name = "scratchy"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+authors = ["LJason <ljason@ljason77.com>"]
+repository = "https://github.com/LJason77/scratchy"
+categories = ["command-line-utilities"]
+description = "Rust 的 B 站下载工具。"
+license-file = "LICENSE"
+homepage = "https://github.com/LJason77/scratchy"
+readme = "README.md"
+build = "build.rs"
+
+[lints.clippy]
+pedantic = "deny"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = "z"
+panic = "abort"
+strip = "symbols"
+
+[features]
+default = ["application"]
+# 二进制程序所需的功能。
+# 当作为库时，应禁用 `application` 功能。
+application = [
+    "minimal"
+]
+minimal = [
+]
+
+[dependencies]
